@@ -1,0 +1,20 @@
+version: '3.3'
+services:
+  mariadb:
+    image: mariadb:10.6
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_DATABASE=ihram
+    volumes:
+      - mariadb_data:/var/lib/mysql
+      - ~/mariadb:/etc/mysql/conf.d
+  ihram:
+    image: purwaren/ihram:0.3-amd64
+    
+networks:
+  ihram-network:
+    driver: brige
+    external: true
+volumes:
+  mariadb_data:
+    external: true
