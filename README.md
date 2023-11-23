@@ -5,6 +5,10 @@
 3. Start the frappe-bench based on ubuntu 22.04 using `make erpnext-start`
 4. Connect to the container using `docker exec` for VS Code Dev Container
 
+### Setup Prerequisite
+1. Install npm v14, use nvm
+2. Install yarn using `npm install -g yarn`
+
 ### How to Setup Frappe & ERPNext
 1. Init the frappe-bench with version-14
 ```bash
