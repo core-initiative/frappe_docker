@@ -6,11 +6,12 @@ services:
       - MYSQL_ROOT_PASSWORD=admin
       - MYSQL_DATABASE=ihram
     volumes:
-      - mariadb_data:/var/lib/mysql
-      - ~/mariadb:/etc/mysql/conf.d
+      - ./mysql:/var/lib/mysql
+      - ./mariadb:/etc/mysql/conf.d
   ihram:
-    image: purwaren/ihram:0.3-amd64
-    
+    image: purwaren/ihram:0.4
+    volumes:
+      - ./ihram:/home/ihram
 networks:
   ihram-network:
     driver: brige

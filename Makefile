@@ -41,7 +41,7 @@ redis-stop: ## stop the database server
 erpnext-start: ## start the php builtin server
 	@docker run --rm --name erpnext \
 		-v $(shell pwd)/ihram:/home/ihram \
-		-d -p 8000:8000 purwaren/ihram:0.3
+		-d -p 8000:8000 purwaren/ihram:0.4
 
 
 .PHONY: erpnext-stop
