@@ -6,16 +6,30 @@ services:
       - MYSQL_ROOT_PASSWORD=admin
       - MYSQL_DATABASE=ihram
     volumes:
-      - ./mysql:/var/lib/mysql
+      - erpnext_mariadb:/var/lib/mysql
       - ./mariadb:/etc/mysql/conf.d
+    ports:
+      - target: 3306
+        published: 3306
+        protocol: tcp
+        mode: host
+    networks:
+      - ihram-network
   ihram:
     image: purwaren/ihram:0.4
     volumes:
       - ./ihram:/home/ihram
+    ports:
+      - target: 8000
+        published: 8000
+        protocol: tcp
+        mode: host
+    networks:
+      - ihram-network
 networks:
   ihram-network:
     driver: brige
     external: true
 volumes:
-  mariadb_data:
+  erpnext_mariadb:
     external: true

@@ -1,19 +1,18 @@
 ## Docker Development Template for Frappe ERPNext
 ### How to Use
 1. Build the docker image inside `ihram` folder, adjust the tag as you want
-2. Start the database using `make db-start`. Dont forget to adjsut the  root password
-3. Start the frappe-bench based on ubuntu 22.04 using `make erpnext-start`
-4. Connect to the container using `docker exec` for VS Code Dev Container
+2. Start the database & ihram container using command `make erpnext-start`. Use command `make erpnext-stop` to shutdown the app
+3. Connect to the container using `docker exec` for VS Code Dev Container
 
 ### Setup Prerequisite
-1. Install npm v14, use nvm
+1. Install npm v20, use nvm
 2. Install yarn using `npm install -g yarn`
 
 ### How to Setup Frappe & ERPNext
 1. Init the frappe-bench with version-14
 ```bash
 cd ~
-bench init frappe-bench --branch version-14
+bench init frappe-bench --frappe-branch version-15
 ```
 
 2. Edit the `common_site_config.json` add `db_host` and point the ip address to the mariadb container
