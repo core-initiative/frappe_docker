@@ -7,7 +7,7 @@ services:
       - MYSQL_DATABASE=ihram
     volumes:
       - erpnext_mariadb:/var/lib/mysql
-      - ./mariadb:/etc/mysql/conf.d
+      - ./mariadb.conf:/etc/mysql/conf.d
     ports:
       - target: 3306
         published: 3306
@@ -16,7 +16,7 @@ services:
     networks:
       - ihram-network
   ihram:
-    image: purwaren/ihram:0.4
+    image: purwaren/ihram:0.5-arm64
     volumes:
       - ./ihram:/home/ihram
     ports:
@@ -28,7 +28,7 @@ services:
       - ihram-network
 networks:
   ihram-network:
-    driver: brige
+    driver: bridge
     external: true
 volumes:
   erpnext_mariadb:
