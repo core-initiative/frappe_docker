@@ -5,7 +5,7 @@ services:
       configurator:
         condition: service_completed_successfully
         required: true
-    image: purwaren/ihram-prod:v1.0-arm64
+    image: purwaren/ihram-prod:v1.0-amd64
     networks:
       default: null
     pull_policy: never
@@ -38,7 +38,7 @@ services:
       REDIS_CACHE: redis-cache:6379
       REDIS_QUEUE: redis-queue:6379
       SOCKETIO_PORT: "9000"
-    image: purwaren/ihram-prod:v1.0-arm64
+    image: purwaren/ihram-prod:v1.0-amd64
     networks:
       default: null
     pull_policy: never
@@ -88,7 +88,7 @@ services:
       UPSTREAM_REAL_IP_ADDRESS: 127.0.0.1
       UPSTREAM_REAL_IP_HEADER: X-Forwarded-For
       UPSTREAM_REAL_IP_RECURSIVE: "off"
-    image: purwaren/ihram-prod:v1.0-arm64
+    image: purwaren/ihram-prod:v1.0-amd64
     networks:
       default: null
     ports:
@@ -112,7 +112,7 @@ services:
       configurator:
         condition: service_completed_successfully
         required: true
-    image: purwaren/ihram-prod:v1.0-arm64
+    image: purwaren/ihram-prod:v1.0-amd64
     networks:
       default: null
     pull_policy: never
@@ -131,7 +131,7 @@ services:
       configurator:
         condition: service_completed_successfully
         required: true
-    image: purwaren/ihram-prod:v1.0-arm64
+    image: purwaren/ihram-prod:v1.0-amd64
     networks:
       default: null
     pull_policy: never
@@ -166,7 +166,7 @@ services:
       configurator:
         condition: service_completed_successfully
         required: true
-    image: purwaren/ihram-prod:v1.0-arm64
+    image: purwaren/ihram-prod:v1.0-amd64
     networks:
       default: null
     pull_policy: never
@@ -183,7 +183,7 @@ services:
       configurator:
         condition: service_completed_successfully
         required: true
-    image: purwaren/ihram-prod:v1.0-arm64
+    image: purwaren/ihram-prod:v1.0-amd64
     networks:
       default: null
     pull_policy: never
@@ -208,12 +208,12 @@ x-backend-defaults:
   depends_on:
     configurator:
       condition: service_completed_successfully
-  image: purwaren/ihram-prod:v1.0-arm64
+  image: purwaren/ihram-prod:v1.0-amd64
   pull_policy: never
   volumes:
     - sites:/home/frappe/frappe-bench/sites
 x-customizable-image:
-  image: purwaren/ihram-prod:v1.0-arm64
+  image: purwaren/ihram-prod:v1.0-amd64
   pull_policy: never
 x-depends-on-configurator:
   depends_on:
