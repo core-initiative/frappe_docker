@@ -34,3 +34,22 @@ cp example.env .env
 ```bash
 docker compose -f compose.yaml -f overrides/compose.noproxy.yaml -f overrides/compose.mariadb.yaml -f overrides/compose.redis.yaml config > ../compose-prod.yml
 ```
+### Part 3 - Starting Up the Deployment
+1. Run & deploy the compose file
+```bash
+docker compose -f compose-prod.yml up -d
+```
+2. After all the container is created and started, setup the site that you want to publish, please adjust the `db-password, admin-password` and `site-name`
+```bash
+docker-compose exec backend bench new-site --no-mariadb-socket --mariadb-root-password <db-password> --admin-password <admin-password> <site-name>
+```
+3. You still need to install the app, for this case `erpnext, hrms, inn`
+```bash
+docker-compose exec backend bench --site <site-name> install-app erpnext
+docker-compose exec backend bench --site <site-name> install-app hrms
+docker-compose exec backend bench --site <site-name> install-app inn
+```
+4. Set the default site to the `site-name` you are created
+```bash
+docker-compose exec backend bench use <site-name>
+```
