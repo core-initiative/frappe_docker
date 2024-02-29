@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ihram
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ihram
+  template:
+    metadata:
+      labels:
+        app: ihram
+    spec:
+      containers:
+      - name: db
+      command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
+      - --skip-innodb-read-only-compressed
+      environment:
+        MYSQL_ROOT_PASSWORD: Ies1Oa0Jahzoxa4i
+      healthcheck:
+        test:
+          - CMD-SHELL
+          - mysqladmin ping -h localhost --password=Ies1Oa0Jahzoxa4i
+        interval: 1s
+        retries: 15
+      image: mariadb:10.6
+      networks:
+        default: null
