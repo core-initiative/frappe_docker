@@ -45,11 +45,16 @@ docker-compose exec backend bench new-site --no-mariadb-socket --mariadb-root-pa
 ```
 3. You still need to install the app, for this case `erpnext, hrms, inn`
 ```bash
-docker-compose exec backend bench --site <site-name> install-app erpnext
-docker-compose exec backend bench --site <site-name> install-app hrms
-docker-compose exec backend bench --site <site-name> install-app inn
+docker compose -f compose-prod.yml exec backend bench --site <site-name> install-app erpnext
+docker compose -f compose-prod.yml exec backend bench --site <site-name> install-app hrms
+docker compose -f compose-prod.yml exec backend bench --site <site-name> install-app inn
 ```
 4. Set the default site to the `site-name` you are created
 ```bash
-docker-compose exec backend bench use <site-name>
+docker compose -f compose-prod.yml exec backend bench use <site-name>
+```
+### Part 4 - Troubleshoot
+1. Clear redis cache
+```bash
+docker compose -f compose-prod.yml exec -it redis-cache redis-cli FLUSHALL
 ```
