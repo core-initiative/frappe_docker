@@ -41,7 +41,10 @@ docker compose -f compose-prod.yml up -d
 ```
 2. After all the container is created and started, setup the site that you want to publish, please adjust the `db-password, admin-password` and `site-name`
 ```bash
-docker-compose exec backend bench new-site --no-mariadb-socket --mariadb-root-password <db-password> --admin-password <admin-password> <site-name>
+# old version
+docker compose exec backend bench new-site --no-mariadb-socket --mariadb-root-password <db-password> --admin-password <admin-password> <site-name>
+# new version
+docker compose exec backend bench new-site --mariadb-user-host-login-scope='%' --mariadb-root-password <db-password> --admin-password <admin-password> <site-name>
 ```
 3. You still need to install the app, for this case `erpnext, hrms, inn`
 ```bash
